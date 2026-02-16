@@ -21,16 +21,16 @@ form.addEventListener("submit", function (event) {
 
   const name = nameInput.value;
   const team = teamSelect.value;
-  const teamName = teamSelect.selectedOptions[0].text;
+  const teamName = teamSelect.selectedOptions?.[0]?.text || "";
 
   if (!name || !team) return;
   count += 1;
   attendeeCountText.textContent = count;
 
   const percentage = Math.round((count / maxCount) * 100);
-  progressBar.style.width = '${percentage}%';
+  progressBar.style.width = `${percentage}%`;           
   progressBar.setAttribute("aria-valuenow", percentage);
-  progressBar.textContent = `${percentage}%`;
+
 
   const teamCounter = document.getElementById(team + "Count");
   teamCounter.textContent = parseInt(teamCounter.textContent) + 1;
