@@ -21,9 +21,10 @@ form.addEventListener("submit", function (event) {
 
   const name = nameInput.value;
   const team = teamSelect.value;
-  const teamName = teamSelect.selectedOptions?.[0]?.text || "";
-
+  const teamName = teamSelect.selectedOptions[0].text;
+  
   if (!name || !team) return;
+  
   count += 1;
   attendeeCountText.textContent = count;
 
@@ -34,8 +35,8 @@ form.addEventListener("submit", function (event) {
 
   const teamCounter = document.getElementById(team + "Count");
   teamCounter.textContent = parseInt(teamCounter.textContent) + 1;
-
- greeting.textContent = `Welcome, ${name} from ${teamName}. You have checked in.`;
+  
+  const message = `🎉 Welcome, ${name} from ${teamName}`;greeting.textContent = message;
 
   form.reset();
 });
